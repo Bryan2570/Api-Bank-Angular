@@ -1,0 +1,80 @@
+/* Layout general */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f5f6f8;
+  font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  color: #1a237e;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  background-color: #e3f2fd;
+}
+
+.menu a.active {
+  background-color: #bbdefb;
+  font-weight: bold;
+  border-left: 4px solid #1a237e;
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header con título y botón */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #333;
+}
+
+/* Contenido */
+.page {
+  background-color: #fff;
+  border-radius: 6px;
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #ddd;
+}

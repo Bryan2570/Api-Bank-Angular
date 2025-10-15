@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Hace que 1rem = 10px (62.5% de 16px) */
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* ESTILOS BOTONES */
+
+/* “Nuevo” */
+.btn-new {
+  background-color: #fbc02d;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-new:hover {
+  background-color: #f9a825;
+}

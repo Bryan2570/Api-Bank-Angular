@@ -1,0 +1,23 @@
+<div class="layout-container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="brand">BANCO</h2>
+    <nav class="menu">
+      <a routerLink="/administration/clients" routerLinkActive="active">Clientes</a>
+      <a routerLink="/administration/accounts" routerLinkActive="active">Cuentas</a>
+      <a routerLink="/administration/movements" routerLinkActive="active">Movimientos</a>
+      <a routerLink="/administration/reports" routerLinkActive="active">Reportes</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <header class="header">
+      <h2>{{ titleBreadCrumb }}</h2>
+    </header>
+
+    <section class="page">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>
