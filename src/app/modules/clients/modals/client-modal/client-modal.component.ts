@@ -49,12 +49,16 @@ export class ClientModalComponent implements OnInit {
   }
 
   registerEditClient() {
-
     const client: any = {
-      genero: this.formClient.get('gender')?.value,
-      edad: this.formClient.get('age')?.value,
+      contrasena: this.formClient.get('password')?.value,
+      estado: this.formClient.get('status')?.value,
       idPersonaNavigation: {
         nombre: this.formClient.get('name')?.value,
+        genero: this.formClient.get('gender')?.value,
+        edad: this.formClient.get('age')?.value,
+        identificacion: this.formClient.get('identification')?.value,
+        direccion: this.formClient.get('address')?.value,
+        telefono: this.formClient.get('phone')?.value,        
       }
     };
 

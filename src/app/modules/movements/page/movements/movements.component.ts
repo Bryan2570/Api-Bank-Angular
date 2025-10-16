@@ -1,12 +1,10 @@
-
-
 import {Component} from '@angular/core';
 import {TableComponent} from "../../../../shared/layouts/table/table.component";
 import {TableActions, TableColumn} from "../../../../shared/layouts/table/interfaces/options-table.interface";
-import {AccountService} from "../../service/accounts.service";
-import {Cuenta} from "../../interface/accounts.response";
+import {MovementsService} from "../../service/movements.service";
+import {Movimiento} from "../../interface/movements.response";
 import {MatDialog} from "@angular/material/dialog";
-import {AccountModalComponent} from "../../modals/account-modal/account-modal.component";
+import {MovementModalComponent} from "../../modals/movements-modal.component";
 
 @Component({
   selector: 'app-clients',
@@ -14,12 +12,12 @@ import {AccountModalComponent} from "../../modals/account-modal/account-modal.co
   imports: [
     TableComponent
   ],
-  templateUrl: './accounts.component.html',
-  styleUrl: './accounts.component.css'
+  templateUrl: './movements.component.html',
+  styleUrl: './movements.component.css'
 })
-export class AccountsComponent {
+export class MovementsComponent {
 
-  dataTable: Cuenta[] = [];
+  dataTable: Movimiento[] = [];
 
   tableAction: TableActions = {
     addByDocument: false,
@@ -28,51 +26,51 @@ export class AccountsComponent {
   }
 
   columnsTable: TableColumn[] = [
-    {name: 'Numero Cuenta', key: 'numCuenta', dataType: 'text'},
-    {name: 'Tipo de Cuenta', key: 'tipoCuenta', dataType: 'text'},
-    {name: 'Saldo Inicial', key: 'saldoInicial', dataType: 'text'},
-    {name: 'Estado', key: 'estado', dataType: 'text'}
+    {name: 'Fecha de Movimiento', key: 'fecha', dataType: 'text'},
+    {name: 'Tipo de Movimiento', key: 'tipoMovimiento', dataType: 'text'},
+    {name: 'Valor', key: 'valor', dataType: 'text'},
+    {name: 'Saldo', key: 'saldo', dataType: 'text'}
   ];
 
   rowActionName: string = "";
 
   constructor(
-    private _accountService: AccountService,
+    private _movementService: MovementsService,
     private _dialog: MatDialog,
   ) {
     this.tableAction.edit ? this.rowActionName = "Opciones" : "";
-    this.getAllAccounts();
+    this.getAllMovements();
   }
 
-  addAccount() {
-    const matDialogRef = this._dialog.open(AccountModalComponent, {
+  addMovement() {
+    const matDialogRef = this._dialog.open(MovementModalComponent, {
       width: '750px',
       autoFocus: false
     });
     matDialogRef.afterClosed().subscribe({
       next: (value) => {
-        if (value) this.getAllAccounts();
+        if (value) this.getAllMovements();
       }
     });
   }
 
-  updateAccount(client: any) {
+  updateMovements(client: any) {
 
-    const matDialogRef = this._dialog.open(AccountModalComponent, {
+    const matDialogRef = this._dialog.open(MovementModalComponent, {
       width: '750px',
       autoFocus: false,
       data: client
     });
     matDialogRef.afterClosed().subscribe({
       next: (value) => {
-        if (value) this.getAllAccounts();
+        if (value) this.getAllMovements();
       }
     });
   }
 
   
-  getAllAccounts() {
-    this._accountService.getAllAccounts().subscribe({
+  getAllMovements() {
+    this._movementService.getAllMovement().subscribe({
       next: data => {
         console.log(data)
         this.dataTable = data;

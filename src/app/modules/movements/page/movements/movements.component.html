@@ -1,9 +1,9 @@
 <app-table
-  (add)="addAccount()"
-  (edit)="updateAccount($event)"
+  (add)="addMovement()"
+  (edit)="updateMovements($event)"
   [actions]="tableAction"
   [tableColumns]="columnsTable"
   [tableData]="dataTable"
   rowActionName="{{rowActionName}}"
-  addActionName="Registrar Cuenta"
+  addActionName="Registrar Movimiento"
 />

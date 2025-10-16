@@ -1,0 +1,33 @@
+<span style="cursor: pointer" (click)="closeModal()">Salir</span>
+<form class="grid add-client-form" [formGroup]="formMovements">
+  <div class="">
+    <div class="input-group">
+      <input type="text" formControlName="dateMovement">
+      <label class="input-title">Fecha de Movimiento</label>
+    </div>
+  </div>
+
+    <div class="input-group">
+       <input type="text" formControlName="typeMovement">
+       <label class="input-title">Tipo de Movimiento</label>    
+    </div>
+
+  <div class="">
+    <div class="input-group">
+      <input type="text" formControlName="value">
+      <label class="input-title">Valor</label>
+    </div>
+  </div>
+
+    <div class="input-group">
+      <input type="text" formControlName="balance">
+      <label class="input-title">Saldo</label>
+    </div>
+
+  
+
+  <div class="add-client-button" (click)="registerEditMovement()">
+    <button class="button">{{ isEdit ? "Editar Cuenta" : "Registrar Cuenta" }}
+    </button>
+  </div>
+</form>

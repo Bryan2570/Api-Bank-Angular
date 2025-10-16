@@ -19,6 +19,11 @@ export const routes: Routes = [{
       path: 'accounts',
       loadComponent: () => import('../accounts/page/accounts/accounts.component').then(c => c.AccountsComponent),
       data: { title: 'Cuentas' }
+    },
+    {
+      path: 'movements',
+      loadComponent: () => import('../movements/page/movements/movements.component').then(m => m.MovementsComponent),
+      data: { title: 'Movimientos' }
     }
   ]
 },]

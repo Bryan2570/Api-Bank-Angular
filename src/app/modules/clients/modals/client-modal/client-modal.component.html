@@ -24,6 +24,24 @@
     </div>
   </div>
 
+    <div class="">
+    <div class="input-group">
+      <input type="text" formControlName="identification">
+      <label class="input-title">Identificación</label>
+    </div>
+  </div>
+  
+    <div class="input-group">
+      <input type="text" formControlName="address">
+      <label class="input-title">Dirección</label>
+    </div>
+
+    <div class="input-group">
+      <input type="text" formControlName="phone">
+      <label class="input-title">Telefono</label>
+    </div>
+ 
+
   <div class="add-client-button" (click)="registerEditClient()">
     <button class="button">{{ isEdit ? "Editar cliente" : "Registrar cliente" }}
     </button>
