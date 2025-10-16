@@ -114,4 +114,8 @@ export class TableComponent implements OnInit {
     this.edit.emit(value);
   }
 
+  exportFile(): void {
+    this.addExport.emit();
+  }
+
 }

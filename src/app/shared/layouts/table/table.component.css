@@ -68,7 +68,7 @@ app-table {
 }
 .table-body .table-wrapper .table-header .controls .button-table span {
   font-size: 1.4rem;
-  color: #8a8a8a;
+  color: #fff;
   display: block;
 }
 
@@ -91,6 +91,20 @@ app-table {
 
 .table-body .table-wrapper .table-header .controls .button-table-primary:hover {
   background-color: #f9a825;
+}
+
+.table-body .table-wrapper .table-header .controls .button-file {
+  background-color: #2a9904;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.table-body .table-wrapper .table-header .controls .button-file:hover {
+  background-color: #2a9904c2;
 }
 
 .table-body .table-wrapper .table-header .controls .button-table-primary span, .table-body .table-wrapper .table-header .controls .button-table-primary i {

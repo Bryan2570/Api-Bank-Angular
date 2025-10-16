@@ -5,6 +5,9 @@
         <div class="content-button-table">
           <div class="container-filters">
           </div>
+          <button (click)="exportFile()" *ngIf="actions.addByDocument" class="button-table button-file">
+            <span>Exportar archivo</span>
+          </button>
           <button (click)="addItem()" *ngIf="actions.add" class="button-table button-table-primary">
             <span>{{ addActionName }}</span>
           </button>
