@@ -1,1 +1,9 @@
-<p>clients works!</p>
+<app-table
+  (add)="addClient()"
+  (edit)="updateClient($event)"
+  [actions]="tableAction"
+  [tableColumns]="columnsTable"
+  [tableData]="dataTable"
+  rowActionName="{{rowActionName}}"
+  addActionName="Registrar cliente"
+/>

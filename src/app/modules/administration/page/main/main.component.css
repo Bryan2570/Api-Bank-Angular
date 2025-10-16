@@ -72,9 +72,5 @@
 
 /* Contenido */
 .page {
-  background-color: #fff;
-  border-radius: 6px;
   flex: 1;
-  padding: 20px;
-  border: 1px solid #ddd;
 }

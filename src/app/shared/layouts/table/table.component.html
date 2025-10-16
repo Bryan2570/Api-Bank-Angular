@@ -1,0 +1,55 @@
+<div class="table-body">
+  <div class="table-wrapper">
+    <div class="table-header">
+      <div class="controls">
+        <div class="content-button-table">
+          <div class="container-filters">
+          </div>
+          <button (click)="addItem()" *ngIf="actions.add" class="button-table button-table-primary">
+            <span>{{ addActionName }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="table-content">
+      <table aria-describedby="table-generic" [dataSource]="tableDataSource" mat-table matSort
+             [ngClass]="totalElements>0?'':'table-100'">
+        <ng-container *ngIf="rowActionName?.length && rowActionName !== ''" [matColumnDef]="rowActionName">
+          <th mat-header-cell *matHeaderCellDef scope="col">{{ rowActionName }}</th>
+          <td mat-cell *matCellDef="let element" [id]="rowActionName">
+            <div class="container-buttons">
+              <button class="button-menu" *ngIf="actions.edit"
+                      (click)="editItem(element)">
+                <span class="bottom">Editar</span>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
+          <ng-container>
+            <th *matHeaderCellDef mat-header-cell scope="col">
+              <div class="col-header">
+                <div class="title_column">
+                  <span>{{ tableColumn.name }}</span>
+                </div>
+              </div>
+            </th>
+          </ng-container>
+          <td *matCellDef="let element" mat-cell>
+            <span>{{ element | getterProperty: tableColumn.key | dataTypeTable: tableColumn.dataType }}</span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr *matNoDataRow>
+          <td [colSpan]="displayedColumns.length">
+            <div class="empty-table">
+              <span>¡No hay datos que mostrar!</span>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

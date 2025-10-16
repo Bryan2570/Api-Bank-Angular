@@ -1,0 +1,31 @@
+<span style="cursor: pointer" (click)="closeModal()">Salir</span>
+<form class="grid add-client-form" [formGroup]="formClient">
+  <div class="">
+    <div class="input-group">
+      <input type="text" formControlName="name">
+      <label class="input-title">Nombre del cliente</label>
+    </div>
+  </div>
+
+  <div class="">
+    <div class="">
+      <span class="input-title">Genero</span>
+      <select formControlName="gender">
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="">
+    <div class="input-group">
+      <input type="text" formControlName="age">
+      <label class="input-title">Edad</label>
+    </div>
+  </div>
+
+  <div class="add-client-button" (click)="registerEditClient()">
+    <button class="button">{{ isEdit ? "Editar cliente" : "Registrar cliente" }}
+    </button>
+  </div>
+</form>
