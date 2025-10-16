@@ -10,7 +10,7 @@
 
       <div class="input-group">
         <label class="input-title">Contraseña</label>
-        <input type="text" formControlName="password" />
+        <input type="password" formControlName="password" />
       </div>
 
       <div>
@@ -29,8 +29,9 @@
       <div>
         <span class="input-title">Estado Cliente</span>
         <select formControlName="status">
-          <option value="Activo">ACTIVO</option>
-          <option value="Inactivo">INACTIVO</option>
+          <option [ngValue]="null" disabled selected>Seleccione un estado</option>
+          <option [ngValue]="true">ACTIVO</option>
+          <option [ngValue]="true">INACTIVO</option>
         </select>
       </div>
 

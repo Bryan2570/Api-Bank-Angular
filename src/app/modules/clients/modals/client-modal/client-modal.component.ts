@@ -37,14 +37,14 @@ export class ClientModalComponent implements OnInit {
 
   initFormClient(): void {
     this.formClient = new FormGroup({
+      password: new FormControl(null, [Validators.required]),
+      status: new FormControl(null, [Validators.required]),
       name: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
       age: new FormControl(null, [Validators.required]),
       identification: new FormControl(null, [Validators.required]),
       address: new FormControl(null, [Validators.required]),
-      phone: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required]),
-      status: new FormControl(null, [Validators.required]),
+      phone: new FormControl(null, [Validators.required]),     
     });
   }
 
