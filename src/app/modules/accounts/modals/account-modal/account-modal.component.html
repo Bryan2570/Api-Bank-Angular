@@ -1,39 +1,36 @@
-<span style="cursor: pointer" (click)="closeModal()">Salir</span>
-<form class="grid add-client-form" [formGroup]="formAccount">
-  <div class="">
-    <div class="input-group">
-      <input type="text" formControlName="numAccount">
-      <label class="input-title">Número de Cuenta</label>
-    </div>
-  </div>
+<div class="modal-overlay">
+  <div class="modal-container">
+    <span style="cursor: pointer" (click)="closeModal()">Salir</span>
 
-  <div class="">
-    <div class="">
-      <span class="input-title">Tipo de Cuenta</span>
-      <select formControlName="accountType">
-        <option value="Ahorros">AHORROS</option>
-        <option value="Corriente">CORRIENTE</option>
-      </select>
-    </div>
-  </div>
+    <form class="grid add-client-form" [formGroup]="formAccount">
+      <div class="input-group">
+        <label class="input-title">Número de Cuenta</label>
+        <input type="text" formControlName="numAccount" />
+      </div>
 
-  <div class="">
-    <div class="input-group">
-      <input type="text" formControlName="InitialBalance">
-      <label class="input-title">Salario Inicial</label>
-    </div>
-  </div>
+      <div>
+        <span class="input-title">Tipo de Cuenta</span>
+        <select formControlName="accountType">
+          <option value="Ahorros">AHORROS</option>
+          <option value="Corriente">CORRIENTE</option>
+        </select>
+      </div>
 
-    <div class="">
-    <div class="input-group">
-      <input type="text" formControlName="status">
-      <label class="input-title">Estado</label>
-    </div>
-  </div>
-  
+      <div class="input-group">
+        <label class="input-title">Saldo Inicial</label>
+        <input type="text" formControlName="InitialBalance" />
+      </div>
 
-  <div class="add-client-button" (click)="registerEditAccount()">
-    <button class="button">{{ isEdit ? "Editar Cuenta" : "Registrar Cuenta" }}
-    </button>
+      <div class="input-group">
+        <label class="input-title">Estado</label>
+        <input type="text" formControlName="status" />
+      </div>
+
+      <div class="add-client-button" (click)="registerEditAccount()">
+        <button class="button" type="button">
+          {{ isEdit ? "Editar Cuenta" : "Registrar Cuenta" }}
+        </button>
+      </div>
+    </form>
   </div>
-</form>
+</div>

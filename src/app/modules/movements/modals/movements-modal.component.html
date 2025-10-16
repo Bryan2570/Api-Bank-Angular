@@ -1,33 +1,35 @@
-<span style="cursor: pointer" (click)="closeModal()">Salir</span>
-<form class="grid add-client-form" [formGroup]="formMovements">
-  <div class="">
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="modal-container">
+  <div class="modal-header">
+    <span class="close-modal" (click)="closeModal()">Salir ✕</span>
+    <h2>Registrar Movimiento</h2>
+  </div>
+
+  <form class="add-client-form" [formGroup]="formMovements">
     <div class="input-group">
-      <input type="text" formControlName="dateMovement">
+      <input type="text" placeholder=" " formControlName="dateMovement">
       <label class="input-title">Fecha de Movimiento</label>
     </div>
-  </div>
 
     <div class="input-group">
-       <input type="text" formControlName="typeMovement">
-       <label class="input-title">Tipo de Movimiento</label>    
+      <input type="text" placeholder=" " formControlName="typeMovement">
+      <label class="input-title">Tipo de Movimiento</label>
     </div>
 
-  <div class="">
     <div class="input-group">
-      <input type="text" formControlName="value">
+      <input type="text" placeholder=" " formControlName="value">
       <label class="input-title">Valor</label>
     </div>
-  </div>
 
     <div class="input-group">
-      <input type="text" formControlName="balance">
+      <input type="text" placeholder=" " formControlName="balance">
       <label class="input-title">Saldo</label>
     </div>
 
-  
-
-  <div class="add-client-button" (click)="registerEditMovement()">
-    <button class="button">{{ isEdit ? "Editar Cuenta" : "Registrar Cuenta" }}
-    </button>
-  </div>
-</form>
+    <div class="add-client-button" (click)="registerEditMovement()">
+      <button class="button">
+        {{ isEdit ? "Editar Movimiento" : "Registrar Movimiento" }}
+      </button>
+    </div>
+  </form>
+</div>

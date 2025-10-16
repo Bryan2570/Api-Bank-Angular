@@ -10,8 +10,8 @@ import {MovementsService} from "../../movements/service/movements.service";
   imports: [
     ReactiveFormsModule
   ],
-  templateUrl: './movements-modal.component.html'//,
-  //styleUrl: './movements-modal.component.css'
+  templateUrl: './movements-modal.component.html',
+  styleUrl: './movements-model.component.css'
 })
 export class MovementModalComponent implements OnInit {
 

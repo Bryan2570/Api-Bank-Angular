@@ -62,13 +62,15 @@ export class ClientModalComponent implements OnInit {
       }
     };
 
+    console.log('Objeto que se envía al backend:', client);
+
     this._clientService.addClient(client).subscribe({
       next: (res) => {
-        // this._alert.success('Cliente registrado con exito');
-        // this._dialogRef.close(true);
+        this._alert.success('Cliente registrado con exito');
+        this._dialogRef.close(true);
       },
       error: (err) => {
-        // this._alert.error('Error al registrar el cliente');
+        this._alert.error('Error al registrar el cliente');
       }
     });
 

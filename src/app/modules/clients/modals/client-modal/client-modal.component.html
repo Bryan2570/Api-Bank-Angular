@@ -1,49 +1,59 @@
-<span style="cursor: pointer" (click)="closeModal()">Salir</span>
-<form class="grid add-client-form" [formGroup]="formClient">
-  <div class="">
-    <div class="input-group">
-      <input type="text" formControlName="name">
-      <label class="input-title">Nombre del cliente</label>
-    </div>
-  </div>
+<div class="modal-overlay">
+  <div class="modal-container">
+    <span style="cursor: pointer" (click)="closeModal()">Salir</span>
 
-  <div class="">
-    <div class="">
-      <span class="input-title">Genero</span>
-      <select formControlName="gender">
-        <option value="Masculino">Masculino</option>
-        <option value="Femenino">Femenino</option>
-      </select>
-    </div>
-  </div>
+    <form class="grid add-client-form" [formGroup]="formClient">
+      <div class="input-group">
+        <label class="input-title">Nombre del cliente</label>
+        <input type="text" formControlName="name" />
+      </div>
 
-  <div class="">
-    <div class="input-group">
-      <input type="text" formControlName="age">
-      <label class="input-title">Edad</label>
-    </div>
-  </div>
+      <div class="input-group">
+        <label class="input-title">Contraseña</label>
+        <input type="text" formControlName="password" />
+      </div>
 
-    <div class="">
-    <div class="input-group">
-      <input type="text" formControlName="identification">
-      <label class="input-title">Identificación</label>
-    </div>
-  </div>
-  
-    <div class="input-group">
-      <input type="text" formControlName="address">
-      <label class="input-title">Dirección</label>
-    </div>
+      <div>
+        <span class="input-title">Género</span>
+        <select formControlName="gender">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
 
-    <div class="input-group">
-      <input type="text" formControlName="phone">
-      <label class="input-title">Telefono</label>
-    </div>
- 
+      <div class="input-group">
+        <label class="input-title">Edad</label>
+        <input type="text" formControlName="age" />
+      </div>
 
-  <div class="add-client-button" (click)="registerEditClient()">
-    <button class="button">{{ isEdit ? "Editar cliente" : "Registrar cliente" }}
-    </button>
+      <div>
+        <span class="input-title">Estado Cliente</span>
+        <select formControlName="status">
+          <option value="Activo">ACTIVO</option>
+          <option value="Inactivo">INACTIVO</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label class="input-title">Identificación</label>
+        <input type="text" formControlName="identification" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-title">Dirección</label>
+        <input type="text" formControlName="address" />
+      </div>
+
+      <div class="input-group">
+        <label class="input-title">Teléfono</label>
+        <input type="text" formControlName="phone" />
+      </div>
+
+      <div class="add-client-button" (click)="registerEditClient()">
+        <button class="button" type="button">
+          {{ isEdit ? "Editar cliente" : "Registrar cliente" }}
+        </button>
+      </div>
+    </form>
   </div>
-</form>
+</div>
