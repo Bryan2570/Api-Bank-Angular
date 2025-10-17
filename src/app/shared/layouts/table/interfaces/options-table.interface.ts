@@ -13,9 +13,13 @@ export interface TableColumn {
 export interface TableActions {
   add: boolean,
   edit?: boolean,
-  addByDocument: boolean,
-  return?: boolean;
-  update?: boolean,
+  delete?: boolean,
+}
+
+export const TABLE_ACTIONS: TableActions = {
+  add: false,
+  edit: false,
+  delete: false,
 }
 
 

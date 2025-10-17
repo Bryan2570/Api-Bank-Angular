@@ -28,7 +28,7 @@ export class DataTypeTablePipe implements PipeTransform {
         return value;
       }
       case 'status': {
-        if (typeof value !== 'string') {
+        if (typeof value !== "boolean") {
           console.warn('Valor invalido');
           return null;
         }
@@ -141,8 +141,8 @@ export class DataTypeTablePipe implements PipeTransform {
     }
   }
 
-  addStatusString(value: string): void {
-    if (value === 'Activo') {
+  addStatusString(value: boolean): void {
+    if (value) {
       this.addClass('boolean-active');
     } else {
       this.addClass('boolean-inactive');

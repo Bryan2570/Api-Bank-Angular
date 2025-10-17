@@ -15,6 +15,7 @@ import {
   MatTableDataSource
 } from "@angular/material/table";
 import {
+  TABLE_ACTIONS,
   TableActions,
   TableColumn,
   TypeTable
@@ -26,12 +27,6 @@ import {CustomCurrencyPipe} from "../../../core/pipes/custom-currency.pipe";
 import {MatPaginator} from "@angular/material/paginator";
 import { ReactiveFormsModule } from "@angular/forms";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
-
-const TABLE_ACTIONS: TableActions = {
-  add: false,
-  edit: false,
-  addByDocument: false,
-}
 
 @Component({
   selector: 'app-table',
@@ -63,7 +58,6 @@ const TABLE_ACTIONS: TableActions = {
 })
 export class TableComponent implements OnInit {
   // ====== DATA TABLE ====== \\
-  @Input() titleTable: string = 'titulo';
   tableDataSource = new MatTableDataSource<any>([]);
 
   // ====== COLUMNS ====== \\
@@ -83,7 +77,7 @@ export class TableComponent implements OnInit {
   @Output() edit: EventEmitter<any> = new EventEmitter<any>();
   @Output() add: EventEmitter<any> = new EventEmitter<any>();
   @Output() addExport: EventEmitter<any> = new EventEmitter<any>();
-  @Output() return: EventEmitter<any> = new EventEmitter<any>();
+  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
   }
@@ -113,10 +107,14 @@ export class TableComponent implements OnInit {
   editItem(value: string): void {
     this.edit.emit(value);
   }
-  
 
-  exportFile(): void {
-    this.addExport.emit();
+  deleteItem(value: string): void {
+    this.delete.emit(value);
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.tableDataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
