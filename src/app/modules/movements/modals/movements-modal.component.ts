@@ -5,7 +5,7 @@ import {AlertService} from "../../../../app/core/services/alert.service";
 import {MovementsService} from "../../movements/service/movements.service";
 
 @Component({
-  selector: 'app-client-modal',
+  selector: 'app-movement-modal',
   standalone: true,
   imports: [
     ReactiveFormsModule

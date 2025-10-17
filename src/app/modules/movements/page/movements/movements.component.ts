@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {TableComponent} from "../../../../shared/layouts/table/table.component";
 import {TableActions, TableColumn} from "../../../../shared/layouts/table/interfaces/options-table.interface";
 import {MovementsService} from "../../service/movements.service";
-import {Movimiento} from "../../interface/movements.response";
+import {Movement} from "../../interface/movements.response";
 import {MatDialog} from "@angular/material/dialog";
 import {MovementModalComponent} from "../../modals/movements-modal.component";
 
 @Component({
-  selector: 'app-clients',
+  selector: 'app-movements',
   standalone: true,
   imports: [
     TableComponent
@@ -17,11 +17,12 @@ import {MovementModalComponent} from "../../modals/movements-modal.component";
 })
 export class MovementsComponent {
 
-  dataTable: Movimiento[] = [];
+  dataTable: Movement[] = [];
 
   tableAction: TableActions = {
     edit: true,
     add: true,
+    delete: true
   }
 
   columnsTable: TableColumn[] = [
@@ -66,6 +67,19 @@ export class MovementsComponent {
       }
     });
   }
+
+    // deleteMovement(movementId: number) {
+    //     const matDialogRef = this._dialog.open(DeleteAccountComponent, {
+    //       width: '320px',
+    //       autoFocus: false,
+    //       data: movementId
+    //     });
+    //     matDialogRef.afterClosed().subscribe({
+    //       next: (value) => {
+    //         if (value) this.getAllAccounts();
+    //       }
+    //     });
+    //   }
 
 
   getAllMovements() {
