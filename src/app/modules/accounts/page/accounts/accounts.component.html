@@ -1,6 +1,7 @@
 <app-table
   (add)="addAccount()"
   (edit)="updateAccount($event)"
+  (delete)="deleteAccount($event.idCuenta)"
   [actions]="tableAction"
   [tableColumns]="columnsTable"
   [tableData]="dataTable"

@@ -11,6 +11,7 @@ export const enum EndPoints {
   GET_ALL_CLIENTS_ACCOUNT = '/account/',
   POST_CREATE_ACCOUNT = '/account',
   PUT_UPDATE_ACCOUNT = '/account/',
+  DELETE_ACCOUNT = '/account/',
 
   MOVEMENT = '/movements',
   POST_CREATE_MOVEMENT = '/movements',

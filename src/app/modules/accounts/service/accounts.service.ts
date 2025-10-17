@@ -31,6 +31,11 @@ public getAllAccounts(): Observable<Cuenta[]> {
      return this.httpClient.post<AccountResponse>(this.API_URL + EndPoints.POST_CREATE_ACCOUNT, account);
    }
 
+   public deleteAccount(idAccount: number): Observable<void> {
+    const url = `${this.API_URL}${EndPoints.DELETE_ACCOUNT}${idAccount}`;
+    return this.httpClient.delete<void>(url);
+  }
+
 
     public updateAccount(idAccount: number, account: AccountRequest): Observable<AccountResponse> {
       const url = `${this.API_URL}${EndPoints.PUT_UPDATE_ACCOUNT}${idAccount}`;

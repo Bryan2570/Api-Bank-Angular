@@ -7,6 +7,7 @@ import {AccountService} from "../../service/accounts.service";
 import {Cuenta} from "../../interface/accounts.response";
 import {MatDialog} from "@angular/material/dialog";
 import {AccountModalComponent} from "../../modals/account-modal/account-modal.component";
+import {DeleteAccountComponent} from "../../modals/delete-account/delete-account.component";
 
 @Component({
   selector: 'app-clients',
@@ -24,6 +25,7 @@ export class AccountsComponent {
   tableAction: TableActions = {
     edit: true,
     add: true,
+    delete: true
   }
 
   columnsTable: TableColumn[] = [
@@ -69,6 +71,18 @@ export class AccountsComponent {
     });
   }
 
+  deleteAccount(clientId: number) {
+      const matDialogRef = this._dialog.open(DeleteAccountComponent, {
+        width: '320px',
+        autoFocus: false,
+        data: clientId
+      });
+      matDialogRef.afterClosed().subscribe({
+        next: (value) => {
+          if (value) this.getAllAccounts();
+        }
+      });
+    }
 
   getAllAccounts() {
     this._accountService.getAllAccounts().subscribe({
