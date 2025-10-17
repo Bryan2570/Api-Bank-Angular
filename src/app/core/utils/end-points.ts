@@ -14,6 +14,10 @@ export const enum EndPoints {
   POST_CREATE_MOVEMENT = '/movements',
   UPDATE_CREATE_MOVEMENT = '',
 
+  // GENERATE REPORT
+  REPORTS_GENERATE_PDF = '/movements/generatePDF',
+
+
 }
 
 

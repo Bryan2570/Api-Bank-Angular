@@ -1,0 +1,84 @@
+/* === CONTENEDOR PRINCIPAL === */
+.date-range-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 420px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin: 3rem auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.date-range-container h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* === FORMULARIO === */
+.date-range-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.4rem;
+}
+
+input[type="date"] {
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #111827;
+  background-color: #f9fafb;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+input[type="date"]:focus {
+  border-color: #2563eb;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* === BOTÓN === */
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  .date-range-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}

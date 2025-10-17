@@ -2,6 +2,6 @@
 export const environment = {
   production: false,
   /* --- Url backend ---- */
-  api: 'https://c769e0ac0420.ngrok-free.app/api/v1',
+  api: 'https://2d53863047ac.ngrok-free.app/api/v1',
 
 };

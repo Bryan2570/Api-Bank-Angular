@@ -76,7 +76,6 @@ export class TableComponent implements OnInit {
   // ====== EVENTOS ====== \\
   @Output() edit: EventEmitter<any> = new EventEmitter<any>();
   @Output() add: EventEmitter<any> = new EventEmitter<any>();
-  @Output() addExport: EventEmitter<any> = new EventEmitter<any>();
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {

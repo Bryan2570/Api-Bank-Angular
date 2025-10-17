@@ -66,6 +66,11 @@ app-table {
   border-radius: 0.6rem;
   cursor: pointer;
 }
+
+.button-menu {
+  cursor: pointer;
+}
+
 .table-body .table-wrapper .table-header .controls .button-table span {
   font-size: 1.4rem;
   color: #fff;
