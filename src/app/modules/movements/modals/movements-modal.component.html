@@ -6,24 +6,29 @@
   </div>
 
   <form class="add-client-form" [formGroup]="formMovements">
-    <div class="input-group">
-      <input type="text" placeholder=" " formControlName="dateMovement">
-      <label class="input-title">Fecha de Movimiento</label>
+
+    <div class="form-group">
+      <label for="account">Cuenta</label>
+      <select id="account" formControlName="account">
+        <option value="">Seleccione una cuenta</option>
+        <option *ngFor="let account of accounts" [value]="account.idCuenta">
+          {{ account.numCuenta }}
+        </option>
+      </select>
     </div>
 
-    <div class="input-group">
-      <input type="text" placeholder=" " formControlName="typeMovement">
-      <label class="input-title">Tipo de Movimiento</label>
+    <div class="form-group">
+      <label for="typeMovement">Tipo de movimiento</label>
+      <select id="typeMovement" formControlName="typeMovement">
+        <option value="">Seleccione un tipo de movimiento</option>
+        <option value="RETIRO">RETIRO</option>
+        <option value="DEPOSTIO">DEPOSITO</option>
+      </select>
     </div>
 
     <div class="input-group">
       <input type="text" placeholder=" " formControlName="value">
       <label class="input-title">Valor</label>
-    </div>
-
-    <div class="input-group">
-      <input type="text" placeholder=" " formControlName="balance">
-      <label class="input-title">Saldo</label>
     </div>
 
     <div class="add-client-button" (click)="registerEditMovement()">

@@ -20,16 +20,16 @@ export class MovementsComponent {
   dataTable: Movement[] = [];
 
   tableAction: TableActions = {
-    edit: true,
+    edit: false,
     add: true,
-    delete: true
+    delete: false
   }
 
   columnsTable: TableColumn[] = [
     {name: 'Fecha de Movimiento', key: 'fecha', dataType: 'text'},
     {name: 'Tipo de Movimiento', key: 'tipoMovimiento', dataType: 'text'},
-    {name: 'Valor', key: 'valor', dataType: 'text'},
-    {name: 'Saldo', key: 'saldo', dataType: 'text'}
+    {name: 'Valor', key: 'valor', dataType: 'currency'},
+    {name: 'Saldo', key: 'saldo', dataType: 'currency'}
   ];
 
   rowActionName: string = "";
@@ -54,38 +54,9 @@ export class MovementsComponent {
     });
   }
 
-  updateMovements(client: any) {
-
-    const matDialogRef = this._dialog.open(MovementModalComponent, {
-      width: '750px',
-      autoFocus: false,
-      data: client
-    });
-    matDialogRef.afterClosed().subscribe({
-      next: (value) => {
-        if (value) this.getAllMovements();
-      }
-    });
-  }
-
-    // deleteMovement(movementId: number) {
-    //     const matDialogRef = this._dialog.open(DeleteAccountComponent, {
-    //       width: '320px',
-    //       autoFocus: false,
-    //       data: movementId
-    //     });
-    //     matDialogRef.afterClosed().subscribe({
-    //       next: (value) => {
-    //         if (value) this.getAllAccounts();
-    //       }
-    //     });
-    //   }
-
-
   getAllMovements() {
     this._movementService.getAllMovement().subscribe({
       next: data => {
-        console.log(data)
         this.dataTable = data;
       },
       error: err => {
