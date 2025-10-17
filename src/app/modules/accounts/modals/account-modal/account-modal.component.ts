@@ -7,13 +7,15 @@ import {AccountRequest} from "../../interface/account.request";
 import {AccountModel} from "../../interface/account.models";
 import {ClientService} from "../../../clients/service/client.service";
 import {ClientModel} from "../../../clients/interface/client.model";
+import {NgForOf} from "@angular/common";
 
 
 @Component({
   selector: 'app-client-modal',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgForOf
   ],
   templateUrl: './account-modal.component.html',
   styleUrl: './account-modal.component.css'
@@ -36,10 +38,18 @@ export class AccountModalComponent implements OnInit {
   }
 
   ngOnInit() {
-     if (this.data) {
+    if (this.data) {
       this.isEdit = true;
       this.setValueAccount(this.data);
     }
+    this.loadClients();
+  }
+
+  loadClients(): void {
+    this._clientService.getAllClients().subscribe({
+      next: (clients) => this.clients = clients,
+      error: () => this._alert.error('Error al cargar la lista de clientes.')
+    });
   }
 
   initFormAccount(): void {
@@ -52,40 +62,39 @@ export class AccountModalComponent implements OnInit {
     });
   }
 
-    registerEditAccount() {
+  registerEditAccount() {
     const account = this.buildAccount();
-    
-      if (this.isEdit) {
-        this.updateAccount(account);
-      } else {
-        this.addAccount(account);
-      }
+
+    if (this.isEdit) {
+      this.updateAccount(account);
+    } else {
+      this.addAccount(account);
     }
-  
+  }
 
-        private buildAccount(): AccountRequest {
-  
-        const account: AccountRequest = {
-        numCuenta: this.formAccount.get('numAccount')?.value,
-        tipoCuenta : this.formAccount.get('accountType')?.value,     
-        saldoInicial: this.formAccount.get('InitialBalance')?.value,
-        estado: this.formAccount.get('status')?.value,        
-        idCliente: this.formAccount.get('idClient')?.value,  
-          };      
-          return account;
-        }
+  private buildAccount(): AccountRequest {
+
+    const account: AccountRequest = {
+      numCuenta: this.formAccount.get('numAccount')?.value,
+      tipoCuenta: this.formAccount.get('accountType')?.value,
+      saldoInicial: this.formAccount.get('InitialBalance')?.value,
+      estado: this.formAccount.get('status')?.value,
+      idCliente: this.formAccount.get('idClient')?.value,
+    };
+    return account;
+  }
 
 
-      private updateAccount(account: AccountRequest): void {
-          this._accountService.updateAccount(this.data.idCliente, account).subscribe({
-            next: () => {
-              this._alert.success('Cliente actualizado con éxito');
-              this._dialogRef.close(true);
-            }
-          });
-        }
+  private updateAccount(account: AccountRequest): void {
+    this._accountService.updateAccount(this.data.idCliente, account).subscribe({
+      next: () => {
+        this._alert.success('Cliente actualizado con éxito');
+        this._dialogRef.close(true);
+      }
+    });
+  }
 
-   private addAccount(account: AccountRequest): void {
+  private addAccount(account: AccountRequest): void {
     this._accountService.addAccount(account).subscribe({
       next: () => {
         this._alert.success('Cliente registrado con éxito');
@@ -94,7 +103,7 @@ export class AccountModalComponent implements OnInit {
     });
   }
 
-  setValueAccount(data : any): void {
+  setValueAccount(data: any): void {
     this.formAccount.get("numAccount")?.setValue(data.numCuenta)
     this.formAccount.get("accountType")?.setValue(data.tipoCuenta)
     this.formAccount.get("InitialBalance")?.setValue(data.saldoInicial)
@@ -104,6 +113,6 @@ export class AccountModalComponent implements OnInit {
   closeModal() {
     this._dialogRef.close(true);
   }
-   
+
 
 }
