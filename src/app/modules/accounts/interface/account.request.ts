@@ -2,7 +2,7 @@ export interface AccountRequest {
   numCuenta: string;
   tipoCuenta?: string;
   saldoInicial: string;
-  estado:string;
+  estado:boolean;
   idCliente: number;
 }
 

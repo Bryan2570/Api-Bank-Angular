@@ -86,9 +86,9 @@ export class AccountModalComponent implements OnInit {
 
 
   private updateAccount(account: AccountRequest): void {
-    this._accountService.updateAccount(this.data.idCliente, account).subscribe({
+    this._accountService.updateAccount(this.data.idCuenta, account).subscribe({
       next: () => {
-        this._alert.success('Cliente actualizado con éxito');
+        this._alert.success('Cuenta actualizado con éxito');
         this._dialogRef.close(true);
       }
     });
@@ -97,7 +97,7 @@ export class AccountModalComponent implements OnInit {
   private addAccount(account: AccountRequest): void {
     this._accountService.addAccount(account).subscribe({
       next: () => {
-        this._alert.success('Cliente registrado con éxito');
+        this._alert.success('Cuenta registrado con éxito');
         this._dialogRef.close(true);
       }
     });
