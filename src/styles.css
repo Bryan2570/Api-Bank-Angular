@@ -15,3 +15,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* === SWEETALERT2 CUSTOM STYLES === */
+.swal2-toast .swal2-title {
+  font-size: 1.5rem;
+}
+
+.swal2-toast div:where(.swal2-html-container) {
+  font-size: 1.3rem !important;
+}
