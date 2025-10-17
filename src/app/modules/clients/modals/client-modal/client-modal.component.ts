@@ -77,8 +77,13 @@ export class ClientModalComponent implements OnInit {
   }
 
   setValueClient(data : any): void {
+    this.formClient.get("name")?.setValue(data.nombre)
     this.formClient.get("gender")?.setValue(data.genero)
     this.formClient.get("age")?.setValue(data.edad)
+    this.formClient.get("status")?.setValue(data.estado)
+    this.formClient.get("identification")?.setValue(data.identificacion)
+    this.formClient.get("address")?.setValue(data.direccion)
+    this.formClient.get("phone")?.setValue(data.identificacion)
   }
 
   closeModal() {
