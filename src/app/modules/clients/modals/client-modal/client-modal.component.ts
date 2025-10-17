@@ -83,9 +83,6 @@ export class ClientModalComponent implements OnInit {
       next: () => {
         this._alert.success('Cliente actualizado con éxito');
         this._dialogRef.close(true);
-      },
-      error: () => {
-        this._alert.error('Error al actualizar el cliente');
       }
     });
   }
@@ -95,9 +92,6 @@ export class ClientModalComponent implements OnInit {
       next: () => {
         this._alert.success('Cliente registrado con éxito');
         this._dialogRef.close(true);
-      },
-      error: () => {
-        this._alert.error('Error al registrar el cliente');
       }
     });
   }

@@ -17,7 +17,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error) => {
-
         // Evita manejar errores del API externo ipify
         if (error.url === 'https://api.ipify.org?format=json') {
           return throwError(() => error);
@@ -48,7 +47,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
    */
   private getErrorMessage(error: any): { type: 'error' | 'warning' | 'info'; text: string } | null {
     switch (error.status) {
-
       case 400:
         return {type: 'warning', text: error.error?.message || 'Solicitud inválida.'};
 
@@ -63,10 +61,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         return {type: 'warning', text: error.error?.message || 'Conflicto en la solicitud.'};
 
       case 500:
-        return {type: 'error', text: 'Tenemos problemas en el servidor, reintenta más tarde...'};
+        return {type: 'error', text: error.error?.message || 'Tenemos problemas en el servidor, reintenta más tarde...'};
 
       case 503:
-        return {type: 'error', text: 'El servicio no está disponible temporalmente. Intenta de nuevo luego.'};
+        return {type: 'error', text: error.error?.message || 'El servicio no está disponible temporalmente. Intenta de nuevo luego.'};
 
       default:
         return {type: 'error', text: 'Ha ocurrido un error inesperado. Reintenta más tarde.'};

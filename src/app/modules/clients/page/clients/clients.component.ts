@@ -89,9 +89,6 @@ export class ClientsComponent {
     this._clientsService.getAllClients().subscribe({
       next: data => {
         this.dataTable = data;
-      },
-      error: err => {
-        console.log(err);
       }
     });
   }
