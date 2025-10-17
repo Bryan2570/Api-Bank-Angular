@@ -26,7 +26,7 @@ export class MovementsComponent {
   }
 
   columnsTable: TableColumn[] = [
-    {name: 'Fecha de Movimiento', key: 'fecha', dataType: 'text'},
+    {name: 'Fecha de Movimiento', key: 'fecha', dataType: 'date-military'},
     {name: 'Tipo de Movimiento', key: 'tipoMovimiento', dataType: 'text'},
     {name: 'Valor', key: 'valor', dataType: 'currency'},
     {name: 'Saldo', key: 'saldo', dataType: 'currency'}
