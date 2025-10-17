@@ -7,7 +7,7 @@ import {AccountRequest} from "../../interface/account.request";
 import {AccountModel} from "../../interface/account.models";
 import {ClientService} from "../../../clients/service/client.service";
 import {ClientModel} from "../../../clients/interface/client.model";
-import {ClientRequest} from "../../../clients/interface/client.request";
+
 
 @Component({
   selector: 'app-client-modal',
@@ -36,27 +36,11 @@ export class AccountModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadClients();
-    this.getClientAccount();
-    if (this.data) {
+     if (this.data) {
       this.isEdit = true;
       this.setValueAccount(this.data);
-      
     }
   }
-
-  loadClients(): void {
-    this._clientService.getAllClients().subscribe({
-      next: (clients) => {
-        this.clients = clients;
-      },
-      error: (err) => {
-        console.error('Error al obtener clientes:', err);
-        this._alert.error('Error al cargar la lista de clientes.');
-      }
-    });
-  }
-
 
   initFormAccount(): void {
     this.formAccount = new FormGroup({
@@ -68,75 +52,44 @@ export class AccountModalComponent implements OnInit {
     });
   }
 
-    registerEditClient() {
-    const client = this.buildAccount();
-    this.getClientAccount();
-    if (this.isEdit) {
-      this.updateAccount(client);
-    } else {
-      this.addAccount(client);
+    registerEditAccount() {
+    const account = this.buildAccount();
+    
+      if (this.isEdit) {
+        this.updateAccount(account);
+      } else {
+        this.addAccount(account);
+      }
     }
-  }
   
-    private buildAccount(): AccountRequest {
+
+        private buildAccount(): AccountRequest {
   
-      const account: AccountRequest = {
+        const account: AccountRequest = {
         numCuenta: this.formAccount.get('numAccount')?.value,
         tipoCuenta : this.formAccount.get('accountType')?.value,     
         saldoInicial: this.formAccount.get('InitialBalance')?.value,
         estado: this.formAccount.get('status')?.value,        
         idCliente: this.formAccount.get('idClient')?.value,  
-      };
-  
-      return account;
-    }
+          };      
+          return account;
+        }
+
 
       private updateAccount(account: AccountRequest): void {
-        this._accountService.updateAccount(this.data.idCuenta, account).subscribe({
-          next: () => {
-            this._alert.success('Cuenta actualizado con éxito!');
-            this._dialogRef.close(true);
-          }
-        });
-      }
-
-        private addAccount(account: AccountRequest): void {
-          this._accountService.addAccount(account).subscribe({
+          this._accountService.updateAccount(this.data.idCliente, account).subscribe({
             next: () => {
-              this._alert.success('Cuenta registrada con éxito!');
+              this._alert.success('Cliente actualizado con éxito');
               this._dialogRef.close(true);
             }
           });
         }
-        
-  private getClientAccount(): void {
-    this._clientService.getClientAccount(this.data.idCliente).subscribe({
-      next: () => {
-        this._alert.success('Cliente actualizado con éxito');
-        this._dialogRef.close(true);
-      }
-    });
-  }
 
-  registerEditAccount() {
-
-    const account: any = {
-        numCuenta: this.formAccount.get('numAccount')?.value,
-        tipoCuenta: this.formAccount.get('accountType')?.value,     
-        saldoInicial: this.formAccount.get('InitialBalance')?.value,
-        estado: this.formAccount.get('status')?.value,       
-        idCliente: this.formAccount.get('idClient')?.value  
-    };
-
- 
-
+   private addAccount(account: AccountRequest): void {
     this._accountService.addAccount(account).subscribe({
-      next: (res) => {
-        // this._alert.success('Cliente registrado con exito');
-        // this._dialogRef.close(true);
-      },
-      error: (err) => {
-        // this._alert.error('Error al registrar el cliente');
+      next: () => {
+        this._alert.success('Cliente registrado con éxito');
+        this._dialogRef.close(true);
       }
     });
   }
@@ -151,8 +104,6 @@ export class AccountModalComponent implements OnInit {
   closeModal() {
     this._dialogRef.close(true);
   }
-
-
    
 
 }
