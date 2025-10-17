@@ -4,7 +4,10 @@ import {EndPoints} from "../../../core/utils/end-points";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {Cuenta} from "../interface/accounts.response";
-
+import {AccountRequest} from "../interface/account.request";
+import { AccountResponse} from "../interface/accounts.response";
+import {ClientRequest} from "../../clients/interface/client.request";
+import { ClientResponse} from "../../clients/interface/clients.response";
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +26,17 @@ public getAllAccounts(): Observable<Cuenta[]> {
   });
 }
 
-  public addAccount(client: any): Observable<any> {
-    return this.httpClient.post<any>(this.API_URL + EndPoints.POST_CREATE_CLIENT, client);
-  }
+  public addAccount(account: AccountRequest): Observable<AccountResponse> {
+    console.log(account);
+     return this.httpClient.post<AccountResponse>(this.API_URL + EndPoints.POST_CREATE_ACCOUNT, account);
+   }
+
+
+    public updateAccount(idAccount: number, account: AccountRequest): Observable<AccountResponse> {
+      const url = `${this.API_URL}${EndPoints.PUT_UPDATE_ACCOUNT}${idAccount}`;
+      return this.httpClient.put<AccountResponse>(url, account);
+    }
+  
+
 
 }

@@ -2,13 +2,15 @@ export const enum EndPoints {
 
   // 1. Clientes
   CLIENT = '/client',
+  
   POST_CREATE_CLIENT = '/client',
   PUT_UPDATE_CLIENT = '/client/',
   DELETE_CLIENT = '/client/',
 
   ACCOUNT = '/account',
+  GET_ALL_CLIENTS_ACCOUNT = '/account/',
   POST_CREATE_ACCOUNT = '/account',
-  UPDATE_CREATE_ACCOUNT = '',
+  PUT_UPDATE_ACCOUNT = '/account/',
 
   MOVEMENT = '/movements',
   POST_CREATE_MOVEMENT = '/movements',

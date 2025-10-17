@@ -2,6 +2,16 @@
   <div class="modal-container">
     <span style="cursor: pointer" (click)="closeModal()">Salir</span>
 
+      <div class="form-group">
+      <label for="cliente">Cliente</label>
+      <select id="cliente" formControlName="cliente" class="form-select">
+        <option value="">Seleccione un cliente</option>
+        <option *ngFor="let client of clients" [value]="client.idCliente">
+          {{ client.nombre }}
+        </option>
+      </select>
+    </div>
+
     <form class="grid add-client-form" [formGroup]="formAccount">
       <div class="input-group">
         <label class="input-title">Número de Cuenta</label>
@@ -22,8 +32,12 @@
       </div>
 
       <div class="input-group">
-        <label class="input-title">Estado</label>
-        <input type="text" formControlName="status" />
+        <label class="input-title">Estado de Cuenta</label>
+        <select formControlName="status">
+          <option [ngValue]="null" disabled selected>Seleccione un estado</option>
+          <option [ngValue]="true">ACTIVO</option>
+          <option [ngValue]="true">INACTIVO</option>
+        </select>
       </div>
 
       <div class="add-client-button" (click)="registerEditAccount()">

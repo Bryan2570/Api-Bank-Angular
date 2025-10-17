@@ -46,5 +46,12 @@ export class ClientService {
     const url = `${this.API_URL}${EndPoints.DELETE_CLIENT}${idClient}`;
     return this.httpClient.delete<void>(url);
   }
+  
+  public getClientAccount(idClient: number): Observable<ClientResponse> {
+    const url = `${this.API_URL}${EndPoints.GET_ALL_CLIENTS_ACCOUNT}${idClient}`;
+    return this.httpClient.get<ClientResponse>(url);
+  }
+
+
 
 }

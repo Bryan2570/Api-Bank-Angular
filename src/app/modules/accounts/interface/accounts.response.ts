@@ -6,3 +6,5 @@ export interface Cuenta {
   estado: boolean;
   idCliente: string;
 }
+
+export type AccountResponse = Cuenta[];

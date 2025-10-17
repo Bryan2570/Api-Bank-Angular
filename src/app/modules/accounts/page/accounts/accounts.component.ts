@@ -55,12 +55,12 @@ export class AccountsComponent {
     });
   }
 
-  updateAccount(client: any) {
+  updateAccount(account: any) {
 
     const matDialogRef = this._dialog.open(AccountModalComponent, {
       width: '750px',
       autoFocus: false,
-      data: client
+      data: account
     });
     matDialogRef.afterClosed().subscribe({
       next: (value) => {
