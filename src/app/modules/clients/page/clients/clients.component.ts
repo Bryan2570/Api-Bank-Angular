@@ -28,10 +28,10 @@ export class ClientsComponent {
 
   columnsTable: TableColumn[] = [
     {name: 'Nombre', key: 'nombre', dataType: 'text'},
-    {name: 'Estado', key: 'estado', dataType: 'text'},
-    {name: 'Identificación', key: 'identificacion', dataType: 'text'},
+    {name: 'Estado', key: 'estado', dataType: 'boolean-to-status'},
+    {name: 'Identificación', key: 'identificacion', dataType: 'number'},
     {name: 'Dirección', key: 'direccion', dataType: 'text'},
-    {name: 'Teléfono', key: 'telefono', dataType: 'text'},
+    {name: 'Teléfono', key: 'telefono', dataType: 'number'},
     {name: 'Género', key: 'genero', dataType: 'text'}
   ];
 

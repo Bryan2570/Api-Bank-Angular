@@ -1,5 +1,3 @@
-
-
 import {Component} from '@angular/core';
 import {TableComponent} from "../../../../shared/layouts/table/table.component";
 import {TableActions, TableColumn} from "../../../../shared/layouts/table/interfaces/options-table.interface";
@@ -29,10 +27,10 @@ export class AccountsComponent {
   }
 
   columnsTable: TableColumn[] = [
-    {name: 'Numero Cuenta', key: 'numCuenta', dataType: 'text'},
+    {name: 'Numero Cuenta', key: 'numCuenta', dataType: 'number'},
     {name: 'Tipo de Cuenta', key: 'tipoCuenta', dataType: 'text'},
-    {name: 'Saldo Inicial', key: 'saldoInicial', dataType: 'text'},
-    {name: 'Estado', key: 'estado', dataType: 'text'}
+    {name: 'Saldo Inicial', key: 'saldoInicial', dataType: 'currency'},
+    {name: 'Estado', key: 'estado', dataType: 'boolean-to-status'}
   ];
 
   rowActionName: string = "";
@@ -72,17 +70,17 @@ export class AccountsComponent {
   }
 
   deleteAccount(clientId: number) {
-      const matDialogRef = this._dialog.open(DeleteAccountComponent, {
-        width: '320px',
-        autoFocus: false,
-        data: clientId
-      });
-      matDialogRef.afterClosed().subscribe({
-        next: (value) => {
-          if (value) this.getAllAccounts();
-        }
-      });
-    }
+    const matDialogRef = this._dialog.open(DeleteAccountComponent, {
+      width: '320px',
+      autoFocus: false,
+      data: clientId
+    });
+    matDialogRef.afterClosed().subscribe({
+      next: (value) => {
+        if (value) this.getAllAccounts();
+      }
+    });
+  }
 
   getAllAccounts() {
     this._accountService.getAllAccounts().subscribe({

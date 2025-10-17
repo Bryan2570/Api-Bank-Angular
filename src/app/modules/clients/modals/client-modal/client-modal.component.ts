@@ -33,7 +33,7 @@ export class ClientModalComponent implements OnInit {
   ngOnInit() {
     if (this.data) {
       this.isEdit = true;
-      // this.setValueClient(this.data);
+      this.setValueClient(this.data);
     }
   }
 
@@ -64,7 +64,7 @@ export class ClientModalComponent implements OnInit {
 
     const client: ClientRequest = {
       estado: this.formClient.get('status')?.value,
-      contrasena : this.formClient.get('password')?.value,
+      contrasena: this.formClient.get('password')?.value,
       idPersonaNavigation: {
         nombre: this.formClient.get('name')?.value,
         genero: this.formClient.get('gender')?.value,
@@ -96,15 +96,15 @@ export class ClientModalComponent implements OnInit {
     });
   }
 
-  // setValueClient(data: ClientModel) {
-  //   this.formClient.get("name")?.setValue(data.nombre);
-  //   this.formClient.get("gender")?.setValue(data.genero);
-  //   this.formClient.get("age")?.setValue(data.edad);
-  //   this.formClient.get("status")?.setValue(data.estado);
-  //   this.formClient.get("identification")?.setValue(data.identificacion);
-  //   this.formClient.get("address")?.setValue(data.direccion);
-  //   this.formClient.get("phone")?.setValue(data.identificacion);
-  // }
+  setValueClient(data: ClientModel) {
+    this.formClient.get("name")?.setValue(data.nombre);
+    this.formClient.get("gender")?.setValue(data.genero);
+    this.formClient.get("age")?.setValue(data.edad);
+    this.formClient.get("status")?.setValue(data.estado);
+    this.formClient.get("identification")?.setValue(data.identificacion);
+    this.formClient.get("address")?.setValue(data.direccion);
+    this.formClient.get("phone")?.setValue(data.identificacion);
+  }
 
   closeModal() {
     this._dialogRef.close(true);
