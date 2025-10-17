@@ -22,7 +22,6 @@ export class AccountsComponent {
   dataTable: Cuenta[] = [];
 
   tableAction: TableActions = {
-    addByDocument: false,
     edit: true,
     add: true,
   }
@@ -70,7 +69,7 @@ export class AccountsComponent {
     });
   }
 
-  
+
   getAllAccounts() {
     this._accountService.getAllAccounts().subscribe({
       next: data => {

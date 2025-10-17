@@ -1,6 +1,7 @@
 <app-table
   (add)="addClient()"
   (edit)="updateClient($event)"
+  (delete)="deleteClient($event.idCliente)"
   [actions]="tableAction"
   [tableColumns]="columnsTable"
   [tableData]="dataTable"

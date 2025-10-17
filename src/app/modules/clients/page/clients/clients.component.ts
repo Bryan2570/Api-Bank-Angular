@@ -2,9 +2,10 @@ import {Component} from '@angular/core';
 import {TableComponent} from "../../../../shared/layouts/table/table.component";
 import {TableActions, TableColumn} from "../../../../shared/layouts/table/interfaces/options-table.interface";
 import {ClientService} from "../../service/client.service";
-import {ClientModel} from "../../interface/clients.response";
 import {MatDialog} from "@angular/material/dialog";
 import {ClientModalComponent} from "../../modals/client-modal/client-modal.component";
+import {ClientModel} from "../../interface/client.model";
+import {DeleteClientComponent} from "../../modals/delete-client/delete-client.component";
 
 @Component({
   selector: 'app-clients',
@@ -20,9 +21,9 @@ export class ClientsComponent {
   dataTable: ClientModel[] = [];
 
   tableAction: TableActions = {
-    addByDocument: false,
     edit: true,
     add: true,
+    delete: true
   }
 
   columnsTable: TableColumn[] = [
@@ -71,10 +72,22 @@ export class ClientsComponent {
 
   }
 
+  deleteClient(clientId: number) {
+    const matDialogRef = this._dialog.open(DeleteClientComponent, {
+      width: '320px',
+      autoFocus: false,
+      data: clientId
+    });
+    matDialogRef.afterClosed().subscribe({
+      next: (value) => {
+        if (value) this.getAllClients();
+      }
+    });
+  }
+
   getAllClients() {
     this._clientsService.getAllClients().subscribe({
       next: data => {
-        console.log(data)
         this.dataTable = data;
       },
       error: err => {

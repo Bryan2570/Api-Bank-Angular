@@ -3,7 +3,8 @@ export const enum EndPoints {
   // 1. Clientes
   CLIENT = '/client',
   POST_CREATE_CLIENT = '/client',
-  UPDATE_CREATE_CLIENT = '',
+  PUT_UPDATE_CLIENT = '/client/',
+  DELETE_CLIENT = '/client/',
 
   ACCOUNT = '/account',
   POST_CREATE_ACCOUNT = '/account',

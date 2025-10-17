@@ -3,7 +3,9 @@ import {map, Observable} from "rxjs";
 import {EndPoints} from "../../../core/utils/end-points";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {ClientModel, ClientResponse} from "../interface/clients.response";
+import { ClientResponse} from "../interface/clients.response";
+import {ClientModel} from "../interface/client.model";
+import {ClientRequest} from "../interface/client.request";
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +33,18 @@ export class ClientService {
     );
   }
 
-  public addClient(client: any): Observable<any> {
-    return this.httpClient.post<any>(this.API_URL + EndPoints.POST_CREATE_CLIENT, client);
+  public addClient(client: ClientRequest): Observable<ClientResponse> {
+    return this.httpClient.post<ClientResponse>(this.API_URL + EndPoints.POST_CREATE_CLIENT, client);
+  }
+
+  public updateClient(idClient: number, client: ClientRequest): Observable<ClientResponse> {
+    const url = `${this.API_URL}${EndPoints.PUT_UPDATE_CLIENT}${idClient}`;
+    return this.httpClient.put<ClientResponse>(url, client);
+  }
+
+  public deleteClient(idClient: number): Observable<void> {
+    const url = `${this.API_URL}${EndPoints.DELETE_CLIENT}${idClient}`;
+    return this.httpClient.delete<void>(url);
   }
 
 }

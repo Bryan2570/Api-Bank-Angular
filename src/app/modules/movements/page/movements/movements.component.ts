@@ -20,7 +20,6 @@ export class MovementsComponent {
   dataTable: Movimiento[] = [];
 
   tableAction: TableActions = {
-    addByDocument: false,
     edit: true,
     add: true,
   }
@@ -68,7 +67,7 @@ export class MovementsComponent {
     });
   }
 
-  
+
   getAllMovements() {
     this._movementService.getAllMovement().subscribe({
       next: data => {
